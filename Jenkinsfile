@@ -1,7 +1,4 @@
 pipeline {
-  environment{
-   PATH = "C:\\Windows\\System32" 
-  }
   agent any
   stages {
     stage('Dev-Build-Stage') {
@@ -10,13 +7,14 @@ pipeline {
         bat 'set path=%PATH%;C:\\apache-maven\\bin'
         bat 'mvn install'
         bat 'StartApp.bat'
-        script{
+        script {
           try{
-              bat 'StopApp.bat'
+            bat 'StopApp.bat'
           }catch(Exception e){
-           echo "no apps running in port 9002" 
+            echo "no apps running in port 9002"
           }
         }
+
       }
     }
 
@@ -53,5 +51,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    PATH = 'C:\\Windows\\System32'
   }
 }
