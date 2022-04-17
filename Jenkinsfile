@@ -4,7 +4,6 @@ pipeline {
     stage('Dev-Build-Stage') {
       steps {
         git(url: 'https://github.com/RajalakshmiNathan/WebApp.git', branch: 'main', poll: true)
-        bat 'set path=%PATH%;C:\\apache-maven\\bin'
         bat 'mvn install'
         bat 'StartApp.bat'
         script {
@@ -23,7 +22,6 @@ pipeline {
         stage('Ui Automation') {
           steps {
             git 'https://github.com/RajalakshmiNathan/WebAppUiAutomation.git'
-            bat 'set path=%PATH%;C:\\apache-maven\\bin'
             bat 'mvn test'
           }
         }
@@ -31,7 +29,6 @@ pipeline {
         stage('Api Automation') {
           steps {
             git 'https://github.com/RajalakshmiNathan/WebAppApiAutomation.git'
-            bat 'set path=%PATH%;C:\\apache-maven\\bin'
             bat 'mvn test'
           }
         }
