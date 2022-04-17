@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    PATH = "C:\\WINDOWS\\SYSTEM32"
-}
   stages {
     stage('Dev-Build-Stage') {
       steps {
@@ -51,5 +48,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    PATH = 'C:\\WINDOWS\\SYSTEM32'
   }
 }
