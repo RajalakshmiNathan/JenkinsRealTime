@@ -6,7 +6,13 @@ pipeline {
         git(url: 'https://github.com/RajalakshmiNathan/WebApp.git', branch: 'main', poll: true)
         bat 'mvn install'
         bat 'StartApp.bat'
-        bat 'StopApp.bat'
+        script{
+          try{
+              bat 'StopApp.bat'
+          }catch(Exception e){
+           echo "no apps running in port 9002" 
+          }
+        }
       }
     }
 
